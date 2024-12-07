@@ -1,0 +1,17 @@
+/* ThemeToggle.css */
+.theme-toggle {
+    position: fixed; /* Make sure it's fixed in place */
+    top: 10px; /* Position from top */
+    right: 20px; /* Position from right */
+    cursor: pointer;
+    font-size: 24px; /* Adjust icon size */
+    transition: color 0.3s; /* Smooth color transition */
+  }
+  
+  .theme-toggle span {
+    transition: transform 0.3s ease;
+  }
+  
+  .theme-toggle:hover span {
+    transform: rotate(360deg); 
+  }
