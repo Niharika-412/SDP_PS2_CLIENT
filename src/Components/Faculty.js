@@ -23,9 +23,8 @@ const facultyData = [
     profilePic: 'https://tse2.mm.bing.net/th?id=OIP.khCRkTPBcJrtkdQ_UD9b6wHaE7&pid=Api&P=0&h=220',
     students: ['Alice Brown', 'Bob Green'],
   },
-  // Other faculty data...
   {
-    id: 2,
+    id: 3,
     name: 'Dr. Bhargav',
     department: 'Mathematics',
     courses: ['Calculus', 'Statistics'],
@@ -33,7 +32,7 @@ const facultyData = [
     students: ['Alice Brown', 'Bob Green'],
   },
   {
-    id: 2,
+    id: 4,
     name: 'Dr. Nihar',
     department: 'Mathematics',
     courses: ['Calculus', 'Statistics'],
@@ -106,6 +105,12 @@ const Faculty = () => {
     setOpenQuizModal(true);  // Open the quiz modal
   };
 
+  const handleGiveAssignment = (facultyId) => {
+    setSelectedFacultyId(facultyId);
+    // Logic for assigning homework
+    alert(`Homework assigned to Faculty ID: ${facultyId}`);
+  };
+
   const handleCloseModal = () => {
     setOpenQuizModal(false);
     setOpenHomeworkModal(false);
@@ -173,7 +178,7 @@ const Faculty = () => {
                 <Button
                   variant="contained"
                   startIcon={<AssignmentIcon />}
-                  onClick={() => handleGiveAssignment(faculty.id)}
+                  onClick={() => handleGiveAssignment(faculty.id)} // Using handleGiveAssignment for Homework
                   sx={{
                     backgroundColor: '#1976d2',
                     '&:hover': { backgroundColor: '#125a9e' },
@@ -273,17 +278,28 @@ const Faculty = () => {
             value={quizDetails.dueDate}
             onChange={handleQuizChange}
             sx={{ marginBottom: 2 }}
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
           <Button
             variant="contained"
+            fullWidth
             color="primary"
             onClick={handleAssignQuiz}
-            sx={{ width: '100%' }}
+            sx={{ padding: '12px', fontWeight: 600 }}
           >
             Assign Quiz
           </Button>
         </Box>
       </Modal>
+
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={3000}
+        onClose={() => setOpenSnackbar(false)}
+        message={snackbarMessage}
+      />
     </Container>
   );
 };
