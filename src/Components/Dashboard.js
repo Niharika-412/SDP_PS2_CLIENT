@@ -65,10 +65,6 @@ const Dashboard = () => {
       transition: 'transform 0.3s ease, box-shadow 0.3s ease',
       cursor: 'pointer',
     },
-    mentorCardHover: {
-      transform: 'scale(1.05)',
-      boxShadow: '0 10px 20px rgba(0, 0, 0, 0.15)',
-    },
     mentorImage: {
       width: '120px',
       height: '120px',
@@ -112,20 +108,6 @@ const Dashboard = () => {
       boxShadow: '0 6px 15px rgba(0, 0, 0, 0.1)',
       transition: 'transform 0.3s ease, box-shadow 0.3s ease',
     },
-    featureCardHover: {
-      transform: 'translateY(-10px)',
-      boxShadow: '0 10px 20px rgba(0, 0, 0, 0.15)',
-    },
-    featureTitle: {
-      fontSize: '1.5rem',
-      fontWeight: 'bold',
-      color: '#004d40',
-      marginBottom: '10px',
-    },
-    featureDescription: {
-      fontSize: '1rem',
-      color: '#555',
-    },
     footer: {
       marginTop: '60px',
       textAlign: 'center',
@@ -135,11 +117,29 @@ const Dashboard = () => {
       backgroundColor: '#004d40',
       borderRadius: '10px',
     },
-    footerLink: {
-      color: '#b2dfdb',
-      textDecoration: 'none',
+    quickLinksSection: {
+      marginTop: '50px',
+      backgroundColor: '#fff',
+      padding: '40px 20px',
+      borderRadius: '20px',
+      boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
+    },
+    quickLinksHeading: {
+      fontSize: '2rem',
+      color: '#004d40',
+      textAlign: 'center',
+      marginBottom: '20px',
+    },
+    quickLinksGrid: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(3, 1fr)',
+      gap: '20px',
+      textAlign: 'center',
+    },
+    quickLinksColumn: {
+      fontSize: '1rem',
       fontWeight: 'bold',
-      marginLeft: '10px',
+      color: '#00796b',
     },
   };
 
@@ -148,7 +148,9 @@ const Dashboard = () => {
       {/* Header */}
       <header style={styles.header}>
         <h1 style={styles.headerTitle}>Welcome to EDU-LOOP</h1>
-        <p style={styles.headerSubtitle}>Unlock your potential with innovative online learning solutions.</p>
+        <p style={styles.headerSubtitle}>
+          Unlock your potential with innovative online learning solutions.
+        </p>
       </header>
 
       {/* Mentor Section */}
@@ -156,8 +158,8 @@ const Dashboard = () => {
         <h2 style={styles.mentorHeading}>Our Mentors</h2>
         <div style={styles.mentorList}>
           {[{ name: 'Bhargavi', role: 'AI/ML Expert', img: mentor4 },
-            { name: 'Niharika', role: 'DBMS Specialist', img: mentor5 },
-            { name: 'Jayathi', role: 'Data Science Expert', img: mentor6 }].map((mentor, idx) => (
+          { name: 'Niharika', role: 'DBMS Specialist', img: mentor5 },
+          { name: 'Jayathi', role: 'Data Science Expert', img: mentor6 }].map((mentor, idx) => (
             <div style={styles.mentorCard} key={idx}>
               <img src={mentor.img} alt={mentor.name} style={styles.mentorImage} />
               <h3 style={styles.mentorName}>{mentor.name}</h3>
@@ -174,7 +176,7 @@ const Dashboard = () => {
           {['Interactive Learning', 'Expert Mentorship', '24/7 Support', 'Comprehensive Resources'].map((feature, idx) => (
             <div style={styles.featureCard} key={idx}>
               <h3 style={styles.featureTitle}>{feature}</h3>
-              <p style={styles.featureDescription}>
+              <p>
                 Learn with hands-on practice and guidance from our world-class mentors.
               </p>
             </div>
@@ -182,9 +184,27 @@ const Dashboard = () => {
         </div>
       </section>
 
+      {/* Quick Links Section */}
+      <section style={styles.quickLinksSection}>
+        <h2 style={styles.quickLinksHeading}>Quick Links</h2>
+        <div style={styles.quickLinksGrid}>
+          {[
+            ['Admissions', 'Courses', 'Mentors'],
+            ['FAQs', 'Support', 'Contact Us'],
+            ['Blog', 'Careers', 'Events'],
+          ].map((column, idx) => (
+            <div style={styles.quickLinksColumn} key={idx}>
+              {column.map((link, i) => (
+                <p key={i}>{link}</p>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Footer */}
       <footer style={styles.footer}>
-        &copy; 2024 EDU-LOOP. All Rights Reserved. <a href="#" style={styles.footerLink}>Privacy Policy</a>
+        &copy; 2024 EDU-LOOP. All Rights Reserved.
       </footer>
     </div>
   );
